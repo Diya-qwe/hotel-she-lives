@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>She &amp; Lives — Hotel Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ================= AUTH SCREEN ================= -->
+<div id="authScreen">
+  <div class="auth-card">
+    <div class="auth-hero">
+      <div>
+        <div class="brand-eyebrow">Est. in code, built for guests</div>
+        <h1>She &amp; Lives</h1>
+        <p>A heritage-styled hotel platform — book rooms, spa, dining and more, with your bill updating the instant you do.</p>
+      </div>
+      <div>
+        <div class="jali"></div>
+        <p style="margin-top:14px; font-size:12px; color:#9FB0A8;">All data stays on this device — no server, no signup emails, just your browser's local storage.</p>
+      </div>
+    </div>
+    <div class="auth-form-wrap">
+      <div class="tabs">
+        <button class="tab-btn active" id="tabLogin" onclick="setAuthTab('login')">Log in</button>
+        <button class="tab-btn" id="tabRegister" onclick="setAuthTab('register')">Register</button>
+      </div>
+
+      <form id="loginForm" onsubmit="return handleLogin(event)">
+        <div class="field"><label>Email</label><input type="email" id="loginEmail" required placeholder="you@example.com"></div>
+        <div class="field"><label>Password</label><input type="password" id="loginPassword" required placeholder="••••••••"></div>
+        <div class="field"><label>Log in as</label>
+          <select id="loginRole"><option value="customer">Customer</option><option value="admin">Admin</option></select>
+        </div>
+        <button class="btn btn-primary" type="submit">Log in</button>
+        <div class="error-text hidden" id="loginError"></div>
+        <p class="help-note">Demo admin — register any account as "Admin" to explore the dashboard.</p>
+      </form>
+
+      <form id="registerForm" class="hidden" onsubmit="return handleRegister(event)">
+        <div class="field"><label>Full name</label><input type="text" id="regName" required placeholder="Ananya Rao"></div>
+        <div class="field"><label>Email</label><input type="email" id="regEmail" required placeholder="you@example.com"></div>
+        <div class="row2">
+          <div class="field"><label>Phone number</label><input type="tel" id="regPhone" required placeholder="98765 43210"></div>
+          <div class="field"><label>User type</label>
+            <select id="regRole"><option value="customer">Customer</option><option value="admin">Admin</option></select>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Password</label><input type="password" id="regPassword" required></div>
+          <div class="field"><label>Confirm password</label><input type="password" id="regConfirm" required></div>
+        </div>
+        <button class="btn btn-primary" type="submit">Create account</button>
+        <div class="error-text hidden" id="regError"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ================= APP SHELL ================= -->
+<div id="appShell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">She &amp; Lives<span id="roleTag">CUSTOMER PANEL</span></div>
+    <div id="navLinks"></div>
+    <div class="sidebar-foot">© 2026 She &amp; Lives Hotels. Frontend demo — no real payments.</div>
+  </aside>
+
+  <main class="main" id="mainContent">
+    <div class="topbar">
+      <div>
+        <h2 id="pageTitle">Dashboard</h2>
+        <div class="sub" id="pageSub">Welcome back</div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" title="Toggle theme" onclick="toggleTheme()">🌓</button>
+        <button class="icon-btn" title="Notifications" onclick="go('notifications')">🔔</button>
+        <div class="pill-user"><div class="avatar" id="avatarInitial">A</div><span id="userNameTag">Guest</span></div>
+      </div>
+    </div>
+    <div id="viewRoot"></div>
+  </main>
+</div>
+
+<button id="billFab" onclick="openBill()"><span class="dot"></span> 💰 SHOW BILL — <span id="billFabTotal">₹0</span></button>
+<div id="overlay" onclick="closeBill()"></div>
+<div id="billPanel">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+    <h3>Your bill</h3>
+    <button class="icon-btn" onclick="closeBill()">✕</button>
+  </div>
+  <div class="jali" style="margin:10px 0 16px;"></div>
+  <div id="billLines" style="flex:1; overflow-y:auto;"></div>
+  <div style="margin-top:16px; display:flex; flex-direction:column; gap:10px;">
+    <button class="btn btn-primary" onclick="go('payment'); closeBill();">Continue to payment</button>
+    <button class="btn btn-outline" onclick="closeBill()">Close</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
