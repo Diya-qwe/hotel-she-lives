@@ -243,6 +243,7 @@ tr:hover td{background:rgba(199,150,46,0.06);}
 #overlay.show{display:block;}
 
 /* Payment */
+/* payment done */
 .pay-method{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px;}
 .pay-method button{flex:1; min-width:130px; padding:16px; border-radius:12px; border:1.5px solid var(--border); background:var(--surface); font-weight:700; font-size:13.5px;}
 .pay-method button.active{border-color:var(--gold); background:rgba(199,150,46,.1);}
