@@ -52,6 +52,7 @@ function seedSampleBookings(){
   });
   DB.set(KEYS.BOOKINGS, bookings);
   return bookings;
+  //return bookings;
 }
 
 generateRooms();
