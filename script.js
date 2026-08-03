@@ -16,6 +16,7 @@ const ROOM_TYPES = [
 ];
 const FLOORS = [1,2,3,4,5];
 const ROOMS_PER_FLOOR = 8;
+
 function generateRooms(){
   let rooms = DB.get(KEYS.ROOMS, null);
   if(rooms) return rooms;
@@ -51,8 +52,8 @@ function seedSampleBookings(){
   });
   DB.set(KEYS.BOOKINGS, bookings);
   return bookings;
-  //return bookings;
 }
+/* text */
 
 generateRooms();
 seedSampleBookings();
