@@ -16,7 +16,7 @@ const ROOM_TYPES = [
 ];
 const FLOORS = [1,2,3,4,5];
 const ROOMS_PER_FLOOR = 8;
-
+/* text */
 function generateRooms(){
   let rooms = DB.get(KEYS.ROOMS, null);
   if(rooms) return rooms;
